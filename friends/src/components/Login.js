@@ -32,9 +32,9 @@ console.log(e.target.value)
         axios
         .post(`http://localhost:5000/api/login`, inputData)
         .then(res =>{
-            setIsLoading(false);
-            console.log(isLoading, 'loads')
-            console.log('res', res)
+            // setIsLoading(false);
+            // console.log(isLoading, 'loads')
+            console.log('res', res.data.payload)
             window.localStorage.setItem('token', res.data.payload)
             //navigate user to protected routes
             props.history.push('/protected')

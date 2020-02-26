@@ -21,25 +21,22 @@ const submitHandler = (e) =>{
     console.log(data)
 
 }
-
 const postData = e =>{
-    e.preventDefault()
-    axios
-    .post(`http://localhost:5000/api/friends`, data)
+    // e.preventDefault()
+    axiosWithAuth()
+    .post(`/api/friends`, data)
     .then(res =>{
-        // setIsLoading(false);
-        // console.log(isLoading, 'loads')
         console.log('res', res)
-        window.localStorage.setItem('token', res.data.payload)
-        //navigate user to protected routes
-        // props.history.push('/protected')
-       })
+    return res   
+    })
     .catch(err => err )
+    console.log(data, 'data')
+
     }
 
     return (
         <div>
-<form onSubmit={submitHandler}>
+<form onSubmit={postData}>
     <input
     placeholder="Name"
     type="text"
