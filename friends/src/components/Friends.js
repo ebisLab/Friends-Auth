@@ -6,8 +6,13 @@ const Friends = () =>{
     const [data, setData] = useState([])
 
     useEffect(() => {
+        const token = window.localStorage.getItem('token')
        axios
-       .get(`http://localhost:5000/api/friends`)
+       .get(`http://localhost:5000/api/friends`, {
+           headers: {
+               authorization: token
+           }
+       })
        .then(res => 
         console.log('res', res))
         .catch(err =>
