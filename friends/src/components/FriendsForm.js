@@ -5,7 +5,9 @@ import {axiosWithAuth} from '../utils/axiosWithAuth'
 
 const FriendsForm = (props) =>{
     const [data, setData] = useState({
-        name:''
+        name:'',
+        age: '',
+        email: ''
     })
 
 const changeHandler = e =>{
@@ -30,7 +32,20 @@ const submitHandler = (e) =>{
     label="name"
     value={data.name}
     onChange={changeHandler}/>
-
+   <input
+    placeholder="Age"
+    type="text"
+    name="age"
+    label="age"
+    value={data.age}
+    onChange={changeHandler}/>
+       <input
+    placeholder="Email"
+    type="text"
+    name="email"
+    label="email"
+    value={data.email}
+    onChange={changeHandler}/>
 
     <button>Add</button>
     </form>        </div>

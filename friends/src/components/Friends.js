@@ -9,7 +9,9 @@ const Friends = () =>{
 const addItem = (peep)=>{
     const newPeep={
 id: Date.now(),
-name: peep.name
+name: peep.name,
+age: peep.age,
+email: peep.email
     }
     setData([...data, newPeep])
 }
