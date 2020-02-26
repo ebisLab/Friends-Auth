@@ -1,14 +1,19 @@
 import React, {useState,useEffect} from 'react';
 import axios from 'axios'
 import {axiosWithAuth} from '../utils/axiosWithAuth'
-
+import FriendsForm from './FriendsForm'
 
 const Friends = () =>{
     const [data, setData] = useState([])
 
-
+const addItem = (peep)=>{
+    const newPeep={
+id: Date.now(),
+name: peep.name
+    }
+    setData([...data, newPeep])
+}
     useEffect(() => {
-        const token = window.localStorage.getItem('token')
         axiosWithAuth()
        .get(`/api/friends`)
        .then(res => {
@@ -23,6 +28,8 @@ const Friends = () =>{
             <h1>Hello I'm the Friends component</h1>
 {console.log(data, 'in return')}
             {data.map(peeps => <div key={peeps.id}>{peeps.name}</div>)}
+       
+       <FriendsForm addItem={addItem}/>
         </div>
     )
 }
