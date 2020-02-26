@@ -1,6 +1,7 @@
 import React,{useState} from 'react';
 import axios from 'axios'
-const Login = () =>{
+const Login = (props) =>{
+    console.log(props, 'props')
     const [inputData, setInputData] = useState({
           username: '', 
         password: ''  
@@ -30,12 +31,14 @@ console.log(e.target.value)
     const login = e =>{
         e.preventDefault()
         axios
-        .post(`http://localhost:5000/api/login`, inputData )
+        .post(`http://localhost:5000/api/login`, inputData)
         .then(res =>{
             setIsLoading(false);
             console.log(isLoading, 'loads')
             console.log('res', res)
             window.localStorage.setItem('token', res.data.payload)
+            //navigate user to protected routes
+            props.history.push('/protected')
            })
         .catch(err => err )
         }
