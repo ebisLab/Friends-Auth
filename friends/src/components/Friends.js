@@ -1,18 +1,16 @@
 import React, {useState,useEffect} from 'react';
 import axios from 'axios'
+import {axiosWithAuth} from '../utils/axiosWithAuth'
 
 
 const Friends = () =>{
     const [data, setData] = useState([])
 
+    
     useEffect(() => {
         const token = window.localStorage.getItem('token')
-       axios
-       .get(`http://localhost:5000/api/friends`, {
-           headers: {
-               authorization: token
-           }
-       })
+        axiosWithAuth()
+       .get(`/api/friends`)
        .then(res => 
         console.log('res', res))
         .catch(err =>
