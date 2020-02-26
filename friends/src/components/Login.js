@@ -7,6 +7,8 @@ const Login = () =>{
 
     })
     const [data, setData] = useState([])
+    
+    const [isLoading, setIsLoading] = useState(true)
     const getLoggedIn = (peep)=>{
 const newLog = {
     id: Date.now(), 
@@ -29,8 +31,12 @@ console.log(e.target.value)
         e.preventDefault()
         axios
         .post(`http://localhost:5000/api/login`, inputData )
-        .then(res =>
-            console.log(res))
+        .then(res =>{
+            setIsLoading(false);
+            console.log(isLoading, 'loads')
+            console.log('res', res)
+            window.localStorage.setItem('token', res.data.payload)
+           })
         .catch(err => err )
         }
     return (
