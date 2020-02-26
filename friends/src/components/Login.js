@@ -5,7 +5,7 @@ const Login = () =>{
 
     return (
         <div>
-            <h1>E.B.'s Friends App</h1>
+            <h1>E.B.'s Friends App (Form)</h1>
 <form>
     <input type="text" placeholder="name"/>
         <input type="password" placeholder="password"/>
