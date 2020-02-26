@@ -3,7 +3,8 @@ import logo from './logo.svg';
 import './App.css';
 import Login from './components/Login';
 import Friends from './components/Friends'
-import {Route, Switch, NavLink} from 'react-router-dom'
+import {Route, Switch, NavLink} from 'react-router-dom';
+import PrivateRoute from './components/PrivateRoute'
 
 function App() {
   return (
@@ -13,10 +14,9 @@ function App() {
       <NavLink to="/login">Login</NavLink>
       <NavLink to="/protected">Protectd</NavLink>
       <Switch>
+      <PrivateRoute exact path="/protected" component={Friends} />
       <Route exact path="/" component={Login} />
         <Route exact path="/login" component={Login} />
-        <Route path="/protected" component={Friends} />
-
       </Switch>
     </div>
   );
