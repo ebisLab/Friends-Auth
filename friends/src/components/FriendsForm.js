@@ -22,11 +22,12 @@ const submitHandler = (e) =>{
 
 }
 const postData = e =>{
-    // e.preventDefault()
+    e.preventDefault()
     axiosWithAuth()
     .post(`/api/friends`, data)
     .then(res =>{
         console.log('res', res)
+        props.setData(res.data)
     return res   
     })
     .catch(err => err )

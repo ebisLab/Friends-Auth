@@ -31,7 +31,7 @@ email: peep.email
 {console.log(data, 'in return')}
             {data.map(peeps => <div key={peeps.id}>{peeps.name}</div>)}
        
-       <FriendsForm addItem={addItem}/>
+       <FriendsForm setData={setData} addItem={addItem}/>
         </div>
     )
 }
